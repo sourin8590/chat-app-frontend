@@ -1,3 +1,6 @@
+/* eslint-disable react/display-name */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import {
   Add as AddIcon,
   Delete as DeleteIcon,
@@ -19,14 +22,14 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import React, { Suspense, lazy, memo, useEffect, useState } from "react";
+import { Suspense, lazy, memo, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { LayoutLoader } from "../components/layout/Loaders";
 import AvatarCard from "../components/shared/AvatarCard";
+import UserItem from "../components/shared/UserItem";
 import { Link } from "../components/styles/StyledComponents";
 import { bgGradient, matBlack } from "../constants/color";
-import { useDispatch, useSelector } from "react-redux";
-import UserItem from "../components/shared/UserItem";
 import { useAsyncMutation, useErrors } from "../hooks/hook";
 import {
   useChatDetailsQuery,

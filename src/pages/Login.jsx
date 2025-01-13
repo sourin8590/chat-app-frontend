@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { VisuallyHiddenInput } from "../components/styles/StyledComponents";
@@ -21,20 +21,25 @@ import { userExists } from "../redux/reducers/auth";
 import { usernameValidator } from "../utils/validators";
 
 const Login = () => {
+
+  // variables for login or signup form components
   const [isLogin, setIsLogin] = useState(true);
+
+  // loader after clicking login or signup button
   const [isLoading, setIsLoading] = useState(false);
 
   const toggleLogin = () => setIsLogin((prev) => !prev);
 
+  // form inputs
   const name = useInputValidation("");
   const bio = useInputValidation("");
   const username = useInputValidation("", usernameValidator);
   const password = useInputValidation("");
-
   const avatar = useFileHandler("single");
 
   const dispatch = useDispatch();
 
+  // login form submit handler
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -70,6 +75,7 @@ const Login = () => {
     }
   };
 
+   // signup form submit handler
   const handleSignUp = async (e) => {
     e.preventDefault();
 
@@ -126,6 +132,7 @@ const Login = () => {
           alignItems: "center",
         }}
       >
+        {/* login form box */}
         <Paper
           elevation={3}
           sx={{
@@ -137,7 +144,9 @@ const Login = () => {
         >
           {isLogin ? (
             <>
+              {/* heading */}
               <Typography variant="h5">Login</Typography>
+              {/* login form */}
               <form
                 style={{
                   width: "100%",
@@ -195,7 +204,9 @@ const Login = () => {
             </>
           ) : (
             <>
+              {/* signup heading */}
               <Typography variant="h5">Sign Up</Typography>
+              {/* signup form */}
               <form
                 style={{
                   width: "100%",
